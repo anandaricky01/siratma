@@ -15,8 +15,8 @@
 	<table class='table table-bordered'>
 		<thead>
 			<tr>
-				<th colspan="6">
-					CDK WILAYAH MALANG <br>DINAS KEHUTANAN PROV JATIM <br>KARTU SURAT KELUAR
+				<th colspan="6" class="text-center">
+					CDK WILAYAH MALANG DINAS KEHUTANAN PROV JATIM <br>KARTU SURAT KELUAR
 				</th>
 			</tr>
 		</thead>
