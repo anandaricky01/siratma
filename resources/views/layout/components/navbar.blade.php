@@ -15,6 +15,9 @@
           <li class="nav-item">
             <a class="nav-link {{ Request::is('surat-keluar*') ? 'active' : '' }}" href="/surat-keluar">Surat Keluar</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('disposisi*') ? 'active' : '' }}" href="/disposisi">Disposisi</a>
+          </li>
         </ul>
         <ul class="navbar-nav ms-auto">
           {{-- @auth

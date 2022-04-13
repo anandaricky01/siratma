@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratKeluarController;
+use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,6 +32,7 @@ Route::get('/surat-masuk/{suratmasuk:id}/pdf', [PDFController::class, 'print_mas
 Route::get('/surat-keluar/{suratkeluar:id}/pdf', [PDFController::class, 'print_keluar'])->middleware('auth');
 Route::resource('/surat-masuk', SuratMasukController::class)->middleware('auth');
 Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth');
+Route::resource('/disposisi', DisposisiController::class)->middleware('auth');
 
 // login dan register
 Route::get("/login", [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -39,4 +41,4 @@ Route::post("/logout", [LoginController::class, 'logout']);
 
 Route::get("/password/{password}", function($password){
     return Hash::make($password);
-})->middleware('guest');
+});

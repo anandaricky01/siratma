@@ -29,6 +29,7 @@ class SuratMasukFactory extends Factory
             'pengolah' => $this->faker->name(),
             'tanda_diterima' => '-',
             'catatan' => $this->faker->sentence(10),
+            'perihal' => $this->faker->sentence(2),
             'tanggal_surat' => $this->faker->dateTimeBetween('-3 week', 'now'),
             'tanggal_diteruskan' => $this->faker->dateTime('now','+2 week')
         ];

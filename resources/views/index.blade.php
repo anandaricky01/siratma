@@ -9,8 +9,9 @@
             <h1 style="font-size: 100px;">SiRatma</h1>
             <p style="font-size: 20px;"> <strong>Sistem Informasi Surat Menyurat</strong> adalah aplikasi untuk menginput segala jenis persuratan mulai dari Surat Masuk maupun Surat Keluar CDK Wilayah Malang</p>
             <p class=""></p>
-            <a href="surat-masuk" class="btn btn-primary">Surat Masuk</a>
-            <a href="surat-keluar" class="btn btn-warning">Surat Keluar</a>
+            <a href="/surat-masuk" class="btn btn-primary">Surat Masuk</a>
+            <a href="/surat-keluar" class="btn btn-warning">Surat Keluar</a>
+            <a href="/disposisi" class="btn btn-dark">Lembar Disposisi</a>
 
         </div>
     </div>
