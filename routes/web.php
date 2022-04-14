@@ -30,6 +30,7 @@ Route::get('/home', function () {
 
 Route::get('/surat-masuk/{suratmasuk:id}/pdf', [PDFController::class, 'print_masuk'])->middleware('auth');
 Route::get('/surat-keluar/{suratkeluar:id}/pdf', [PDFController::class, 'print_keluar'])->middleware('auth');
+Route::get('/disposisi/{disposisi:id}/pdf', [PDFController::class, 'print_disposisi'])->middleware('auth');
 Route::resource('/surat-masuk', SuratMasukController::class)->middleware('auth');
 Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth');
 Route::resource('/disposisi', DisposisiController::class)->middleware('auth');

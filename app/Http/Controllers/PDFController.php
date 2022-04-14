@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use PDF;
 use App\Models\SuratMasuk;
 use App\Models\SuratKeluar;
+use App\Models\Disposisi;
 use Illuminate\Http\Request;
 
 class PDFController extends Controller
@@ -20,6 +21,13 @@ class PDFController extends Controller
         $nourut = $suratkeluar->no_urut;
         $pdf = PDF::loadview('suratkeluar.suratkeluarpdf',['suratkeluar'=>$suratkeluar]);
         return $pdf->stream('Surat Keluar No.' . $nourut . '.pdf');
+        
+    }
+
+    public function print_disposisi(Disposisi $disposisi){
+        $nourut = $disposisi->no_urut;
+        $pdf = PDF::loadview('disposisi.disposisipdf',['disposisi'=>$disposisi]);
+        return $pdf->stream('Lembar Disposisi No.' . $nourut . '.pdf');
         
     }
 }
