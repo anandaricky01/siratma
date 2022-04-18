@@ -92,7 +92,7 @@
 
                     <div class="row mb-2">
                         <div class="col">
-                            <label for="perihal" class="form-label">Perihal</label>
+                            <label for="perihal" class="form-label">Index</label>
                             <input autocomplete="off" type="text" class="form-control @error('perihal') is-invalid @enderror" id="perihal" name="perihal" required value="{{ $suratmasuk->perihal }}">
                             @error('perihal')
                                 <div class="invalid-feedback">

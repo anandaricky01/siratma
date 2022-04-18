@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('surat_masuks', function (Blueprint $table) {
             $table->id();
             $table->integer('no_urut')->unique();
+            $table->integer('box')->nullable();
             $table->text('perihal')->nullable();
             $table->string('no_surat')->nullable();
             $table->string('kode')->nullable();

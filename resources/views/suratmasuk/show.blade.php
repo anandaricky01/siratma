@@ -32,7 +32,7 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row">Perihal</th>
+        <th scope="row">Index</th>
         <td scope="col" colspan="3">{{ $suratmasuk->perihal }}</td>
       </tr>
       <tr>
@@ -73,5 +73,4 @@
       </tr>
     </tbody>
   </table>
-
 @endsection

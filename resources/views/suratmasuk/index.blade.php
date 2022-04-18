@@ -19,7 +19,7 @@
     <div class="col-5">
         <div class="input-group mb-4">
             <input type="text" class="form-control" placeholder="Cari Nomor Urut" name="search" value="{{ request('search') }}">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><span data-feather="search"></span></button>
         </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
     <thead>
       <tr>
         <th scope="col">No Urut</th>
-        <th scope="col">Perihal</th>
+        <th scope="col">Index</th>
         <th scope="col">Kode</th>
         <th scope="col">No Surat</th>
         <th scope="col">Tanggal</th>

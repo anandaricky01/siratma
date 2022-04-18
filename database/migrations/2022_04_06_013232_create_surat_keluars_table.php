@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('perihal')->require();
             $table->string('kode')->require();
             $table->integer('no_urut')->require();
+            $table->integer('box')->nullable();
             $table->text('isi_ringkas')->require();
             $table->string('dari_kepada')->require();
             $table->string('pengolah')->require();

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SuratMasukController;
+use App\Http\Controllers\ArsipAktifController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\LoginController;
@@ -32,6 +33,7 @@ Route::get('/surat-masuk/{suratmasuk:id}/pdf', [PDFController::class, 'print_mas
 Route::get('/surat-keluar/{suratkeluar:id}/pdf', [PDFController::class, 'print_keluar'])->middleware('auth');
 Route::get('/disposisi/{disposisi:id}/pdf', [PDFController::class, 'print_disposisi'])->middleware('auth');
 Route::resource('/surat-masuk', SuratMasukController::class)->middleware('auth');
+Route::resource('/arsip-aktif', ArsipAktifController::class)->middleware('auth');
 Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth');
 Route::resource('/disposisi', DisposisiController::class)->middleware('auth');
 

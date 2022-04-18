@@ -22,7 +22,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<th>Perihal</th>
+				<th>Index</th>
 				<td>{{ $suratmasuk->perihal }}</td>
 				<th>No. Urut</th>
 				<td>{{ $suratmasuk->no_urut }}</td>
