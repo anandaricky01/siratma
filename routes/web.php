@@ -10,6 +10,7 @@ use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Hash;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,27 +22,34 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
+// index
 Route::get('/', function () {
     return view('index');
 })->middleware('auth');
 
+// index
 Route::get('/home', function () {
     return view('index');
 })->middleware('auth');
 
+// crud utama (surat keluar/surat masuk/disposisi)
 Route::get('/surat-masuk/{suratmasuk:id}/pdf', [PDFController::class, 'print_masuk'])->middleware('auth');
 Route::get('/surat-keluar/{suratkeluar:id}/pdf', [PDFController::class, 'print_keluar'])->middleware('auth');
 Route::get('/disposisi/{disposisi:id}/pdf', [PDFController::class, 'print_disposisi'])->middleware('auth');
 Route::resource('/surat-masuk', SuratMasukController::class)->middleware('auth');
-Route::resource('/arsip-aktif', ArsipAktifController::class)->middleware('auth');
 Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth');
 Route::resource('/disposisi', DisposisiController::class)->middleware('auth');
+
+// untuk arsip aktif
+Route::get('/arsip-aktif', [ArsipAktifController::class, 'index'])->middleware('auth');
+Route::post('/arsip-aktif', [ArsipAktifController::class, 'print'])->middleware('auth');
 
 // login dan register
 Route::get("/login", [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post("/login", [LoginController::class, 'authenticate']);
 Route::post("/logout", [LoginController::class, 'logout']);
 
-Route::get("/password/{password}", function($password){
-    return Hash::make($password);
-});
+// test password aja
+// Route::get("/password/{password}", function($password){
+//     return Hash::make($password);
+// });

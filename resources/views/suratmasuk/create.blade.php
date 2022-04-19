@@ -86,6 +86,15 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="col">
+                            <label for="box" class="form-label">Box</label>
+                            <input autocomplete="off" type="text" class="form-control @error('box') is-invalid @enderror" id="box" name="box" value="{{ old('box') }}">
+                            @error('box')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     </div>
 
                     <div class="row mb-2">
@@ -103,7 +112,7 @@
                     <div class="row mb-2">
                         <div class="col">
                             <label for="tanda_diterima" class="form-label">Tanda Terima</label>
-                            <input autocomplete="off" type="text" class="form-control @error('tanda_diterima') is-invalid @enderror" id="tanda_diterima" name="tanda_diterima" required value="{{ old('tanda_diterima') }}">
+                            <input autocomplete="off" type="text" class="form-control @error('tanda_diterima') is-invalid @enderror" id="tanda_diterima" name="tanda_diterima" value="{{ old('tanda_diterima') }}">
                             @error('tanda_diterima')
                                 <div class="invalid-feedback">
                                 {{ $message }}
@@ -148,6 +157,7 @@
                         <li>Semua kolom pada blanko wajin diisi semua (Kecuali No Surat)</li>
                         <li>Blanko harus diisi dengan benar dan tepat</li>
                         <li>Jika seluruh kolom telah terisi, klik <u>Submit</u></li>
+                        <li>Jika tidak perlu diisi, dikosongkan saja.</li>
                     </ol>
                 </div>
             </div>

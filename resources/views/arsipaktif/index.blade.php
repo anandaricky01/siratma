@@ -1,58 +1,46 @@
 @extends('layout.layout')
 
 @section('container')
-<div class="my-5">
-    <h1 class="text-center"><strong>Daftar Arsip Aktif</strong></h1>
-    <p class="lead text-center">Cek semua Arsip Aktif yang telah di input di halaman ini!</p>
+<div class="my-5 text-center">
+    <h1 class=""><strong>Halaman Arsip Aktif</strong></h1>
+    <p class="lead">Cek semua Arsip Aktif yang telah di input di halaman ini!</p>
 </div>
 
-@if ($arsipaktif->count() > 0)
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">No</th>
-            <th scope="col">No.Box</th>
-            <th scope="col">Kode</th>
-            <th scope="col">Index</th>
-            <th scope="col">Uraian Masalah</th>
-            <th scope="col">Tahun</th>
-            <th scope="col">Aksi</th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach ($arsipaktif as $arsip)
-            <tr>
-                <th scope="row">{{ $arsip->no_urut }}</th>
-                <td>{!! $arsip->box == NULL ? '<p style="color: rgb(175, 175, 175)">Kosong</p>' : $arsip->box !!}</td>
-                <td>{{ strtoupper($arsip->kode) }}</td>
-                <td>{{ $arsip->perihal }}</td>
-                <td>{{ $arsip->isi_ringkas }}</td>
-                @php
-                    $tahun = explode("-",$arsip->tanggal_surat);
-                @endphp
-                <td>{!! $tahun[0] !!}</td>
-                <td>
-                    <a href="/surat-masuk/{{ $arsip->id }}" class="btn btn-sm btn-primary">Detail</a> 
-                    
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-</table>
-@else 
-<div class="text-center">
-    <img src="/img/surat kosong.png" alt="" width="30%">
-    <h2><Strong>Waduh!</Strong></h2>
-    <p class="lead">Surat yang kamu cari gaada nih.. <br>Coba diperhatikan lagi kata kuncinya ya! <br>Atau membuat surat baru</p>
-    <div>
-      <a href="/surat-masuk/create" class="btn btn-primary mb-3">
-        + Tambah Surat Masuk
-      </a>
+<form action="/arsip-aktif" method="POST">
+    @csrf
+    <div class="row justify-content-md-center">
+        <div class="col-3">
+            <div class="mb-3">
+              <select id="disabledSelect" class="form-select" name="bulan">
+                <option>Bulan</option>
+                <option value="01">Januari</option>
+                <option value="02">Februari</option>
+                <option value="03">Maret</option>
+                <option value="04">April</option>
+                <option value="05">Mei</option>
+                <option value="06">Juni</option>
+                <option value="07">Juli</option>
+                <option value="08">Agustus</option>
+                <option value="09">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+              </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="mb-3">
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="Tahun" name="tahun">
+            </div>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </div>
-  </div>
-@endif
+</form>
 
-<div class="d-flex justify-content-center">
-    {{ $arsipaktif->links() }}
+<div class="text-center">
+    <img class="" src="/img/Surat.png" alt="" width="35%">
 </div>
+
 @endsection

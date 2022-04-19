@@ -100,6 +100,15 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="col">
+                            <label for="box" class="form-label">Index</label>
+                            <input autocomplete="off" type="text" class="form-control @error('box') is-invalid @enderror" id="box" name="box" required value="{{ $suratmasuk->box }}">
+                            @error('box')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     </div>
 
                     <div class="row mb-2">

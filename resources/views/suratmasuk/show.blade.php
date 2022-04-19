@@ -32,8 +32,10 @@
     </thead>
     <tbody>
       <tr>
+        <th scope="row">Kode</th>
+        <td>{{ $suratmasuk->kode }}</td>
         <th scope="row">Index</th>
-        <td scope="col" colspan="3">{{ $suratmasuk->perihal }}</td>
+        <td scope="col">{{ $suratmasuk->perihal }}</td>
       </tr>
       <tr>
         <th scope="row">No Urut</th>
@@ -42,8 +44,8 @@
         <td>{{ $suratmasuk->no_surat }}</td>
       </tr>
       <tr>
-        <th scope="row">Kode</th>
-        <td>{{ $suratmasuk->kode }}</td>
+        <th scope="row">Box</th>
+        <td>{{ $suratmasuk->box == NULL ? '-' : $suratmasuk->box }}</td>
         <th scope="row">Tanggal Surat</th>
         <td>{{ $suratmasuk->tanggal_surat }}</td>
       </tr>

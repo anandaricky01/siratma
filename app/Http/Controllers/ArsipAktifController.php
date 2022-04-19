@@ -4,86 +4,57 @@ namespace App\Http\Controllers;
 
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PDF;
 
 class ArsipAktifController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $arsipaktif = SuratMasuk::filter(request(['search']));
-        return view('arsipaktif.index', [
-        'arsipaktif' => $arsipaktif->paginate(7)->withQueryString()
-        ]
-    );
+    public function index(){
+        return view('arsipaktif.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function print(Request $request){
+        $validated = $request->validate([
+            'bulan' => 'required',
+            'tahun' => 'required|numeric'
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if ($validated['bulan'] == '01') {
+            $namaBulan = 'Januari';
+        } else if ($validated['bulan'] == '02') {
+            $namaBulan = 'Februari';
+        } else if ($validated['bulan'] == '03') {
+            $namaBulan = 'Maret';
+        } else if ($validated['bulan'] == '04') {
+            $namaBulan = 'April';
+        } else if ($validated['bulan'] == '05') {
+            $namaBulan = 'Mei';
+        } else if ($validated['bulan'] == '06') {
+            $namaBulan = 'Juni';
+        } else if ($validated['bulan'] == '07') {
+            $namaBulan = 'Juli';
+        } else if ($validated['bulan'] == '08') {
+            $namaBulan = 'Agustus';
+        } else if ($validated['bulan'] == '09') {
+            $namaBulan = 'September';
+        } else if ($validated['bulan'] == '10') {
+            $namaBulan = 'Oktober';
+        } else if ($validated['bulan'] == '11') {
+            $namaBulan = 'November';
+        } else if ($validated['bulan'] == '12') {
+            $namaBulan = 'Desember';
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SuratMasuk $suratMasuk)
-    {
-        //
-    }
+        $arsipaktif = SuratMasuk::whereYear('tanggal_surat', '=', $validated['tahun'])
+                        ->whereMonth('tanggal_surat', '=', $validated['bulan'])
+                        ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SuratMasuk $suratMasuk)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SuratMasuk $suratMasuk)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SuratMasuk  $suratMasuk
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SuratMasuk $suratMasuk)
-    {
-        //
+        $pdf = PDF::loadview('arsipaktif.arsipaktifpdf',[
+            'arsipaktif'=>$arsipaktif,
+            'namaBulan' => $namaBulan,
+            'tahun' => $validated['tahun']
+        ]);
+        return $pdf->stream('Arsip Aktif Bulan ' . $validated['bulan'] . ' Tahun ' . $validated['tahun'] . '.pdf');
+        
     }
 }

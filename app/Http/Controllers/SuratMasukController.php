@@ -14,7 +14,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        $suratmasuk = SuratMasuk::filter(request(['search']));
+        $suratmasuk = SuratMasuk::latest()->filter(request(['search']));
         return view('suratmasuk.index',[
             'suratmasuk' => $suratmasuk->paginate(7)->withQueryString()
         ]);
@@ -49,13 +49,14 @@ class SuratMasukController extends Controller
         $validated = $request->validate([
             'no_surat' => 'nullable',
             'perihal' => 'required',
+            'box' => 'nullable',
             'kode' => 'required',
             'tanggal_surat' => 'required|date',
             'pengolah' => 'required',
             'tanggal_diteruskan' => 'required|date',
             'lampiran' => 'required|numeric',
             'dari_kepada' => 'required',
-            'tanda_diterima' => 'required',
+            'tanda_diterima' => 'nullable',
             'isi_ringkas' => 'required',
             'catatan' => 'required'
         ]);
@@ -113,12 +114,13 @@ class SuratMasukController extends Controller
             'no_surat' => 'nullable',
             'kode' => 'required',
             'perihal' => 'required',
+            'box' => 'nullable',
             'tanggal_surat' => 'required|date',
             'pengolah' => 'required',
             'tanggal_diteruskan' => 'required|date',
             'lampiran' => 'required|numeric',
             'dari_kepada' => 'required',
-            'tanda_diterima' => 'required',
+            'tanda_diterima' => 'nullable',
             'isi_ringkas' => 'required',
             'catatan' => 'required'
         ]);

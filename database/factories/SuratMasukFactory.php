@@ -21,10 +21,10 @@ class SuratMasukFactory extends Factory
         return [
             'no_urut' => self::$angka++,
             'no_surat' => 'N/' . $this->faker->numberBetween(100,900) . '/' . strtoupper(Str::random(5)) . '/2022',
-            'kode' => generateRandomString(10),
+            'kode' => $this->faker->numberBetween(1,800),
+            'box' => $this->faker->numberBetween(1,3),
             'isi_ringkas' => $this->faker->sentence(5),
             'dari_kepada' => $this->faker->name(),
-            'isi_ringkas' => $this->faker->paragraph(3),
             'lampiran' => $this->faker->numberBetween(1,4),
             'pengolah' => $this->faker->name(),
             'tanda_diterima' => '-',
