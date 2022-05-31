@@ -40,6 +40,11 @@ Route::resource('/surat-masuk', SuratMasukController::class)->middleware('auth')
 Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth');
 Route::resource('/disposisi', DisposisiController::class)->middleware('auth');
 
+// membuat kode
+Route::get('/kode', function(){
+    return view('kode');
+})->middleware('auth');
+
 // untuk arsip aktif
 Route::get('/arsip-aktif', [ArsipAktifController::class, 'index'])->middleware('auth');
 Route::post('/arsip-aktif', [ArsipAktifController::class, 'print'])->middleware('auth');

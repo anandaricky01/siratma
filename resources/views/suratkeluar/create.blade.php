@@ -58,9 +58,18 @@
 
                     <div class="row mb-2">
                         <div class="col">
-                            <label for="perihal" class="form-label"><strong>Perihal</strong> (Indeks)</label>
+                            <label for="perihal" class="form-label"><strong>Indeks</strong></label>
                             <input autocomplete="off" type="text" class="form-control @error('perihal') is-invalid @enderror" id="perihal" name="perihal" required value="{{ old('perihal') }}">
                             @error('perihal')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col">
+                            <label for="box" class="form-label"><strong>Box</strong></label>
+                            <input autocomplete="off" type="text" class="form-control @error('box') is-invalid @enderror" id="box" name="box" required value="{{ old('box') }}">
+                            @error('box')
                                 <div class="invalid-feedback">
                                 {{ $message }}
                                 </div>

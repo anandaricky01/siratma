@@ -27,6 +27,12 @@
             Lembar Disposisi
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('kode') ? 'active' : '' }}" href="/kode">
+            <span data-feather="hash"></span>
+            Kode Pengarsipan
+          </a>
+        </li>
       </ul>
 
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

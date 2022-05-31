@@ -53,12 +53,12 @@ class SuratMasukController extends Controller
             'kode' => 'required',
             'tanggal_surat' => 'required|date',
             'pengolah' => 'required',
-            'tanggal_diteruskan' => 'required|date',
+            'tanggal_diteruskan' => 'nullable|date',
             'lampiran' => 'required|numeric',
             'dari_kepada' => 'required',
             'tanda_diterima' => 'nullable',
             'isi_ringkas' => 'required',
-            'catatan' => 'required'
+            'catatan' => 'nullable'
         ]);
 
         $validated['no_urut'] = $no_urut;
@@ -117,12 +117,12 @@ class SuratMasukController extends Controller
             'box' => 'nullable',
             'tanggal_surat' => 'required|date',
             'pengolah' => 'required',
-            'tanggal_diteruskan' => 'required|date',
+            'tanggal_diteruskan' => 'nullable|date',
             'lampiran' => 'required|numeric',
             'dari_kepada' => 'required',
             'tanda_diterima' => 'nullable',
             'isi_ringkas' => 'required',
-            'catatan' => 'required'
+            'catatan' => 'nullable'
         ]);
 
         if($request->tanggal_surat != $suratMasuk->tanggal_surat){
