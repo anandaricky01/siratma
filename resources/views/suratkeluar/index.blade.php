@@ -78,7 +78,7 @@
     </div>
 @endif
 
-
+    <div class="mt-3"></div>
   <div class="d-flex justify-content-center">
     {{ $suratkeluar->links() }}
 </div>

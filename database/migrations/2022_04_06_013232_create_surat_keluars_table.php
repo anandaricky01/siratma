@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('surat_keluars', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('kode_pengarsipan_id');
             $table->text('perihal')->require();
             $table->string('kode')->require();
             $table->integer('no_urut')->require();

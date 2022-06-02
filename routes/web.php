@@ -7,6 +7,7 @@ use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\ArsipAktifController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\DisposisiController;
+use App\Http\Controllers\KodePengarsipanController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,9 +42,8 @@ Route::resource('/surat-keluar', SuratKeluarController::class)->middleware('auth
 Route::resource('/disposisi', DisposisiController::class)->middleware('auth');
 
 // membuat kode
-Route::get('/kode', function(){
-    return view('kode');
-})->middleware('auth');
+Route::get('/kode', [KodePengarsipanController::class, 'index'])->middleware('auth');
+Route::post('/kode', [KodePengarsipanController::class, 'store'])->middleware('auth');
 
 // untuk arsip aktif
 Route::get('/arsip-aktif', [ArsipAktifController::class, 'index'])->middleware('auth');

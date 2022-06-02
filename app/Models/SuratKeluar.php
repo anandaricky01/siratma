@@ -34,4 +34,8 @@ class SuratKeluar extends Model
         });
     
     }
+
+    public function kodePengarsipan(){
+        return $this->belongsTo(App\Model\kodePengarsipan::class);
+    }
 }

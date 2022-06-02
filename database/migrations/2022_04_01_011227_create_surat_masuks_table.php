@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('surat_masuks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kode_pengarsipan_id');
             $table->integer('no_urut')->unique();
             $table->integer('box')->nullable();
             $table->text('perihal')->nullable();
