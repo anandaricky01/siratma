@@ -26,16 +26,6 @@
                 </div>
                 <div class="col-3">
                     <div class="mb-3">
-                        <input type="text" id="kode_pengarsipan_titik" class="form-control @error('kode_pengarsipan_titik') is-invalid @enderror" placeholder="Bagian" name="kode_pengarsipan_titik" value="{{ old('kode_pengarsipan_titik') }}">
-                        @error('kode_pengarsipan_titik')
-                                <div class="invalid-feedback">
-                                {{ $message }}
-                                </div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="mb-3">
                         <input type="text" id="index" class="form-control @error('index') is-invalid @enderror" placeholder="Index" name="index" value="{{ old('index') }}">
                         @error('index')
                                 <div class="invalid-feedback">
@@ -51,28 +41,37 @@
         </form>
 
         {{-- Untuk Lihat Lihat --}}
-        <div class="mt-3 mb-3">
-            <h3>List Kode Pengarsipan</h3>
-        </div>
-        <div class="row">
-            @foreach ($kode_pengarsipan as $kode)
-                    <div class="col-6">
-                        <ul class="list-group">
-                            <li class="list-group-item">{{ $kode->kode_pengarsipan }}{{ $kode->kode_pengarsipan_titik == '0' ? ' ' : '.' . $kode->kode_pengarsipan_titik }}</li>
-                        </ul>
-                    </div>
-                    <div class="col-6">
-                        <ul class="list-group">
-                            <li class="list-group-item">{{ $kode->index}}</li>
-                        </ul>
-                    </div>
-            @endforeach
-        </div>
+        @if ($kode_pengarsipan->count() > 0)
+            <div class="mt-3 mb-3">
+                <h3>List Kode Pengarsipan</h3>
+            </div>
+            <div class="row">
+                @foreach ($kode_pengarsipan as $kode)
+                        <div class="col-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">{{ $kode->kode_pengarsipan }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">{{ $kode->index}}</li>
+                            </ul>
+                        </div>
+                @endforeach
+            </div>
 
-        <div class="mt-3"></div>
-        <div class="d-flex justify-content-center">
-            {{ $kode_pengarsipan->links() }}
-        </div>
+            <div class="mt-3"></div>
+            <div class="d-flex justify-content-center">
+                {{ $kode_pengarsipan->links() }}
+            </div>
+        @else
+            <div class="mt-5 mb-3 border rounded py-5">
+                <img src="/img/surat kosong.png" alt="" width="30%">
+                <h1>Wah Masih Kosong Nih</h1>
+                <h5>Yuk isi dulu!</h5>
+            </div>
+        @endif
+        
     </div>
     
 @endsection

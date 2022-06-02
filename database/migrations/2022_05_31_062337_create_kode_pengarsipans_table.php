@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('kode_pengarsipans', function (Blueprint $table) {
             $table->id();
             $table->string('kode_pengarsipan');
-            $table->string('kode_pengarsipan_titik');
             $table->string('index');
             $table->timestamps();
         });

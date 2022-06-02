@@ -13,11 +13,16 @@ class KodePengarsipanController extends Controller
     }
 
     public function store(Request $request){
+        $kode_pengarsipan = KodePengarsipan::all('kode_pengarsipan')->where('kode_pengarsipan',$request->kode_pengarsipan);
         $validated = $request->validate([
             'kode_pengarsipan' => 'required',
-            'kode_pengarsipan_titik' => 'required',
             'index' => 'required'
         ]);
+
+        if($kode_pengarsipan === $validated['kode_pengarsipan']){
+            return redirect('/kode')->with('danger', 'Kode Pengarsipan Sudah Ada!');
+        }
+
         KodePengarsipan::create($validated);
         return redirect('/kode')->with('success', 'Kode Berhasil Ditambahkan!');
     }
