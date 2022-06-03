@@ -13,11 +13,11 @@ class KodePengarsipanController extends Controller
     }
 
    public function store(Request $request){
-        $kode_pengarsipan = KodePengarsipan::where('kode_pengarsipan',$request->kode_pengarsipan)->get()[0];
+        $kode_pengarsipan = KodePengarsipan::where('kode_pengarsipan',$request->kode_pengarsipan)->get();
         // check kode \/
-        if($kode_pengarsipan->kode_pengarsipan == $request->kode_pengarsipan){
+        if($kode_pengarsipan->count() >= 1){
             // dd("sudah ada");
-            $isi = "kode pengarsipan sudah ada! <br>" . $kode_pengarsipan->kode_pengarsipan . " - " . $kode_pengarsipan->index;
+            $isi = "kode pengarsipan sudah ada! <br>" . $kode_pengarsipan[0]->kode_pengarsipan . " - " . $kode_pengarsipan[0]->index;
             return redirect('/kode')->with('danger', $isi);
         }
         // cek kode ^
