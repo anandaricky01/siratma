@@ -1,5 +1,4 @@
 @extends('layout.layout')
-
 @section('container')
     <div class="text-center mt-5">
         <h1>Input Kode Pengarsipan</h1>
@@ -7,6 +6,13 @@
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>    
+            @endif
+            
+            @if(session()->has('danger'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {!! session('danger') !!}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>    
             @endif
@@ -54,7 +60,7 @@
                         </div>
                         <div class="col-6">
                             <ul class="list-group">
-                                <li class="list-group-item">{{ $kode->index}}</li>
+                                <li class="list-group-item text-start">{{ $kode->index}}</li>
                             </ul>
                         </div>
                 @endforeach
@@ -71,7 +77,7 @@
                 <h5>Yuk isi dulu!</h5>
             </div>
         @endif
-        
+
     </div>
-    
+
 @endsection
