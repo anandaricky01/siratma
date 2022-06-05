@@ -18,9 +18,9 @@ return new class extends Migration
             $table->foreignId('kode_pengarsipan_id');
             $table->integer('no_urut')->unique();
             $table->integer('box')->nullable();
-            $table->text('perihal')->nullable();
+            // $table->text('perihal')->nullable();
             $table->string('no_surat')->nullable();
-            $table->string('kode')->nullable();
+            // $table->string('kode')->nullable();
             $table->text('isi_ringkas')->nullable();
             $table->string('dari_kepada')->nullable();
             $table->date('tanggal_surat')->nullable();

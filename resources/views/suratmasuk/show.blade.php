@@ -33,9 +33,9 @@
     <tbody>
       <tr>
         <th scope="row">Kode</th>
-        <td>{{ $suratmasuk->kode }}</td>
+        <td>{{ $suratmasuk->kode_pengarsipan->kode_pengarsipan }}</td>
         <th scope="row">Index</th>
-        <td scope="col">{{ $suratmasuk->perihal }}</td>
+        <td scope="col">{{ $suratmasuk->kode_pengarsipan->index }}</td>
       </tr>
       <tr>
         <th scope="row">No Urut</th>

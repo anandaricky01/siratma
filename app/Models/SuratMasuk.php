@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\KodePengarsipan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,7 +36,7 @@ class SuratMasuk extends Model
     
     }
 
-    public function kodePengarsipan(){
-        return $this->belongsTo(App\Model\kodePengarsipan::class);
+    public function kode_pengarsipan(){
+        return $this->belongsTo(KodePengarsipan::class);
     }
 }

@@ -23,7 +23,7 @@ class KodePengarsipanController extends Controller
         // cek kode ^
         
         $validated = $request->validate([
-            'kode_pengarsipan' => 'required',
+            'kode_pengarsipan' => 'required|unique:kode_pengarsipans',
             'index' => 'required'
         ]);
 

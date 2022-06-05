@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SuratMasuk;
+use App\Models\KodePengarsipan;
 use Illuminate\Http\Request;
 
 class SuratMasukController extends Controller
@@ -48,7 +49,7 @@ class SuratMasukController extends Controller
 
         $validated = $request->validate([
             'no_surat' => 'nullable',
-            'perihal' => 'required',
+            // 'perihal' => 'required',
             'box' => 'nullable',
             'kode' => 'required',
             'tanggal_surat' => 'required|date',
@@ -62,6 +63,13 @@ class SuratMasukController extends Controller
         ]);
 
         $validated['no_urut'] = $no_urut;
+
+        $kode = KodePengarsipan::where('kode_pengarsipan', $validated['kode'])->get();
+        if($kode->count() >= 1){
+            $validated['kode_pengarsipan_id'] = $kode[0]->id;
+        } else {
+            return redirect('/surat-masuk/create')->with('danger','Maaf, Nomor Index tidak ditemukan. <br>Silahkan Masukan No Index dalam Halaman Kode Pengarsipan!');
+        }
 
         // explode tanggal surat untuk menyamakan format pada database
         $tanggal_surat = explode("/",$validated['tanggal_surat']);
@@ -110,10 +118,11 @@ class SuratMasukController extends Controller
      */
     public function update(Request $request, SuratMasuk $suratMasuk)
     {
+        
         $validated = $request->validate([
             'no_surat' => 'nullable',
-            'kode' => 'required',
-            'perihal' => 'required',
+            // 'kode' => 'required',
+            // 'perihal' => 'required',
             'box' => 'nullable',
             'tanggal_surat' => 'required|date',
             'pengolah' => 'required',
@@ -124,6 +133,16 @@ class SuratMasukController extends Controller
             'isi_ringkas' => 'required',
             'catatan' => 'nullable'
         ]);
+
+        if($request->kode != $suratMasuk->kode_pengarsipan->kode_pengarsipan){
+            $kode = KodePengarsipan::where('kode_pengarsipan', $request->kode)->get();
+            if($kode->count() >= 1){
+                $validated['kode_pengarsipan_id'] = $kode[0]->id;
+            } else {
+                $redirect = '/surat-masuk/' . $request->id . '/edit';
+                return redirect($redirect)->with('danger','Maaf, Nomor Index tidak ditemukan. <br>Silahkan Masukan No Index dalam Halaman Kode Pengarsipan!');
+            }
+        }
 
         if($request->tanggal_surat != $suratMasuk->tanggal_surat){
             // explode tanggal surat untuk menyamakan format pada database

@@ -23,11 +23,11 @@
 		<tbody>
 			<tr>
 				<th>Index</th>
-				<td>{{ $suratmasuk->perihal }}</td>
+				<td>{{ $suratmasuk->kode_pengarsipan->index }}</td>
 				<th>No. Urut</th>
 				<td>{{ $suratmasuk->no_urut }}</td>
 				<th>Kode</th>
-				<td>{{ $suratmasuk->kode }}</td>
+				<td>{{ $suratmasuk->kode_pengarsipan->kode_pengarsipan }}</td>
 			</tr>
 			<tr>
 				<th>No. Surat</th>

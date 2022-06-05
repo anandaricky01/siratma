@@ -42,8 +42,8 @@
                 <tr>
                     <td>{{ $arsip->no_urut }}</td>
                     <td>{{ $arsip->box }}</td>
-                    <td>{{ $arsip->kode }}</td>
-                    <td>{{ $arsip->perihal }}</td>
+                    <td>{{ $arsip->kode_pengarsipan->kode_pengarsipan }}</td>
+                    <td>{{ $arsip->kode_pengarsipan->index }}</td>
                     <td>{{ $arsip->isi_ringkas }}</td>
                     <td>{{ $tahun }}</td>
                     <td>{{ $arsip->lampiran }}</td>

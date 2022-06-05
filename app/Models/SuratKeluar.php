@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\kodePengarsipan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,6 +37,6 @@ class SuratKeluar extends Model
     }
 
     public function kodePengarsipan(){
-        return $this->belongsTo(App\Model\kodePengarsipan::class);
+        return $this->belongsTo(kodePengarsipan::class);
     }
 }

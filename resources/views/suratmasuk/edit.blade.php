@@ -10,13 +10,21 @@
             Edit Surat Masuk Baru melalui blanko halaman ini!
         </p>
     </div>
+    <div class="my-3">
+        @if(session()->has('danger'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {!! session('danger') !!}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+        @endif
+    </div>
     <div class="mt-3">
         <div class="row">
             <div class="col">
                 <form action="/surat-masuk/{{ $suratmasuk->id }}" method="POST">
                     @csrf
                     @method('put')
-                    <input type="hidden" value="{{ $suratmasuk->id }}">
+                    <input type="hidden" name="id" value="{{ $suratmasuk->id }}">
                     <div class="row mb-2">
                         <div class="col">
                             <label for="no_surat" class="form-label">No. Surat</label>
@@ -29,7 +37,7 @@
                         </div>
                         <div class="col">
                             <label for="kode" class="form-label">Kode</label>
-                            <input autocomplete="off" type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" required value="{{ $suratmasuk->kode }}">
+                            <input autocomplete="off" type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" required value="{{ $suratmasuk->kode_pengarsipan->kode_pengarsipan }}">
                             @error('kode')
                                 <div class="invalid-feedback">
                                 {{ $message }}
@@ -91,15 +99,6 @@
                     </div>
 
                     <div class="row mb-2">
-                        <div class="col">
-                            <label for="perihal" class="form-label">Index</label>
-                            <input autocomplete="off" type="text" class="form-control @error('perihal') is-invalid @enderror" id="perihal" name="perihal" required value="{{ $suratmasuk->perihal }}">
-                            @error('perihal')
-                                <div class="invalid-feedback">
-                                {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
                         <div class="col">
                             <label for="box" class="form-label">Index</label>
                             <input autocomplete="off" type="text" class="form-control @error('box') is-invalid @enderror" id="box" name="box" required value="{{ $suratmasuk->box }}">

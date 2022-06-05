@@ -48,8 +48,8 @@
       @foreach ($suratmasuk as $surat)
       <tr>
         <th>{{ $surat->no_urut }}</th>
-        <th>{{ $surat->perihal }}</th>
-        <td>{{ $surat->kode }}</td>
+        <th>{{ $surat->kode_pengarsipan->index }}</th>
+        <td>{{ $surat->kode_pengarsipan->kode_pengarsipan }}</td>
         <td>{{ $surat->no_surat }}</td>
         <td>{{ $surat->tanggal_surat }}</td>
         <td> 
