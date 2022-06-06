@@ -44,6 +44,7 @@ Route::resource('/disposisi', DisposisiController::class)->middleware('auth');
 // membuat kode
 Route::get('/kode', [KodePengarsipanController::class, 'index'])->middleware('auth');
 Route::post('/kode', [KodePengarsipanController::class, 'store'])->middleware('auth');
+Route::post('/kode/{kode:id}', [KodePengarsipanController::class, 'delete'])->middleware('auth');
 
 // untuk arsip aktif
 Route::get('/arsip-aktif', [ArsipAktifController::class, 'index'])->middleware('auth');

@@ -30,4 +30,9 @@ class KodePengarsipanController extends Controller
         KodePengarsipan::create($validated);
         return redirect('/kode')->with('success', 'Kode Berhasil Ditambahkan!');
     }
+
+    public function delete(KodePengarsipan $kode){
+        $kode->destroy($kode->id);
+        return redirect('/kode')->with('success', 'Kode berhasil dihapus');
+    }
 }

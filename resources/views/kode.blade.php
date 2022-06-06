@@ -48,23 +48,31 @@
 
         {{-- Untuk Lihat Lihat --}}
         @if ($kode_pengarsipan->count() > 0)
-            <div class="mt-3 mb-3">
-                <h3>List Kode Pengarsipan</h3>
-            </div>
-            <div class="row">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Kode</th>
+                    <th scope="col">Index</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+                </thead>
+                <tbody>
                 @foreach ($kode_pengarsipan as $kode)
-                        <div class="col-6">
-                            <ul class="list-group">
-                                <li class="list-group-item">{{ $kode->kode_pengarsipan }}</li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul class="list-group">
-                                <li class="list-group-item text-start">{{ $kode->index}}</li>
-                            </ul>
-                        </div>
+                <tr>
+                    <th>{{ $kode->kode_pengarsipan }}</th>
+                    <td class="text-start">{{ $kode->index }}</td>
+                    <td>  
+                    <form action="/kode/{{ $kode->id }}" method="POST" class="d-inline">
+                        @csrf
+                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Kamu yakin?')">
+                        Hapus
+                        </button>
+                    </form> 
+                    </td>
+                </tr>
                 @endforeach
-            </div>
+                </tbody>
+            </table>
 
             <div class="mt-3"></div>
             <div class="d-flex justify-content-center">
