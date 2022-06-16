@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('kode_pengarsipan_id');
-            $table->text('perihal')->require();
-            $table->string('kode')->require();
+            // $table->text('perihal')->require();
+            // $table->string('kode')->require();
             $table->integer('no_urut')->require();
             $table->integer('box')->nullable();
             $table->text('isi_ringkas')->require();

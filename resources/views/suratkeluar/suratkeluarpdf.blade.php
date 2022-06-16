@@ -22,14 +22,14 @@
 		</thead>
 		<tbody>
 			<tr>
-				<th>Perihal</th>
-				<td colspan="5">{{ $suratkeluar->perihal }}</td>
+				<th>Index</th>
+				<td colspan="5">{{ $suratkeluar->kode_pengarsipan->index }}</td>
 			</tr>
             <tr>
 				<th>No. Urut</th>
 				<td>{{ $suratkeluar->no_urut }}</td>
 				<th>Kode</th>
-				<td>{{ $suratkeluar->kode }}</td>
+				<td>{{ $suratkeluar->kode_pengarsipan->kode_pengarsipan }}</td>
 				<th>Tanggal Surat</th>
 				<td>{{$suratkeluar->tanggal_surat}}</td>
             </tr>

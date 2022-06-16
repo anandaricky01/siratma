@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\ArsipAktifController;
+use App\Http\Controllers\ArsipKorespondensiController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\KodePengarsipanController;
@@ -49,6 +50,10 @@ Route::post('/kode/{kode:id}', [KodePengarsipanController::class, 'delete'])->mi
 // untuk arsip aktif
 Route::get('/arsip-aktif', [ArsipAktifController::class, 'index'])->middleware('auth');
 Route::post('/arsip-aktif', [ArsipAktifController::class, 'print'])->middleware('auth');
+
+// untuk arsip korespondensi
+Route::get('/arsip-korespondensi', [ArsipKorespondensiController::class, 'index'])->middleware('auth');
+Route::post('/arsip-korespondensi', [ArsipKorespondensiController::class, 'print'])->middleware('auth');
 
 // login dan register
 Route::get("/login", [LoginController::class, 'index'])->name('login')->middleware('guest');

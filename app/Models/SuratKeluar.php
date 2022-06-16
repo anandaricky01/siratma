@@ -36,7 +36,7 @@ class SuratKeluar extends Model
     
     }
 
-    public function kodePengarsipan(){
+    public function kode_pengarsipan(){
         return $this->belongsTo(kodePengarsipan::class);
     }
 }

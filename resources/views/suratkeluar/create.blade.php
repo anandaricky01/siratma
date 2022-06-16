@@ -10,6 +10,14 @@
             Tambahkan Surat Keluar Baru melalui blanko halaman ini!
         </p>
     </div>
+    <div class="my-3">
+        @if(session()->has('danger'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {!! session('danger') !!}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+        @endif
+    </div>
     <div class="mt-3">
         <div class="row">
             <div class="col">
@@ -57,15 +65,6 @@
                     </div>
 
                     <div class="row mb-2">
-                        <div class="col">
-                            <label for="perihal" class="form-label"><strong>Indeks</strong></label>
-                            <input autocomplete="off" type="text" class="form-control @error('perihal') is-invalid @enderror" id="perihal" name="perihal" required value="{{ old('perihal') }}">
-                            @error('perihal')
-                                <div class="invalid-feedback">
-                                {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
                         <div class="col">
                             <label for="box" class="form-label"><strong>Box</strong></label>
                             <input autocomplete="off" type="text" class="form-control @error('box') is-invalid @enderror" id="box" name="box" required value="{{ old('box') }}">

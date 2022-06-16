@@ -32,8 +32,8 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row">Perihal</th>
-        <td scope="col" colspan="3">{{ $suratkeluar->perihal }}</td>
+        <th scope="row">Index</th>
+        <td scope="col" colspan="3">{{ $suratkeluar->kode_pengarsipan->index }}</td>
       </tr>
       <tr>
         <th scope="row">No Urut</th>
@@ -43,7 +43,7 @@
       </tr>
       <tr>
         <th scope="row">Kode</th>
-        <td>{{ $suratkeluar->kode }}</td>
+        <td>{{ $suratkeluar->kode_pengarsipan->kode_pengarsipan }}</td>
         <th scope="row">Tanggal Surat</th>
         <td>{{ $suratkeluar->tanggal_surat }}</td>
       </tr>

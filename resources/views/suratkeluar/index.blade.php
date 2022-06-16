@@ -37,7 +37,7 @@
     <thead>
       <tr>
         <th scope="col">No Urut</th>
-        <th scope="col">Perihal</th>
+        <th scope="col">Index</th>
         <th scope="col">Kode</th>
         <th scope="col">Tanggal</th>
         <th scope="col">Aksi</th>
@@ -47,8 +47,8 @@
       @foreach ($suratkeluar as $surat)
       <tr>
         <th>{{ $surat->no_urut }}</th>
-        <th>{{ $surat->perihal }}</th>
-        <td>{{ $surat->kode }}</td>
+        <th>{{ $surat->kode_pengarsipan->index }}</th>
+        <td>{{ $surat->kode_pengarsipan->kode_pengarsipan }}</td>
         <td>{{ $surat->tanggal_surat }}</td>
         <td> 
           <a href="/surat-keluar/{{ $surat->id }}" class="btn btn-sm btn-primary">Detail</a> 

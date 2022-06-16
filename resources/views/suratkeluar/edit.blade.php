@@ -16,10 +16,11 @@
                 <form action="/surat-keluar/{{ $suratkeluar->id }}" method="POST">
                     @csrf
                     @method('put')
+                    <input type="hidden" name="id" value="{{ $suratkeluar->id }}">
                     <div class="row mb-2">
                         <div class="col">
                             <label for="kode" class="form-label"><strong>Kode</strong></label>
-                            <input autocomplete="off" type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" required value="{{ $suratkeluar->kode }}">
+                            <input autocomplete="off" type="text" class="form-control @error('kode') is-invalid @enderror" id="kode" name="kode" required value="{{ $suratkeluar->kode_pengarsipan->kode_pengarsipan }}">
                             @error('kode')
                                 <div class="invalid-feedback">
                                 {{ $message }}
@@ -59,9 +60,9 @@
 
                     <div class="row mb-2">
                         <div class="col">
-                            <label for="perihal" class="form-label"><strong>Perihal</strong> (Indeks)</label>
-                            <input autocomplete="off" type="text" class="form-control @error('perihal') is-invalid @enderror" id="perihal" name="perihal" required value="{{ $suratkeluar->perihal }}">
-                            @error('perihal')
+                            <label for="dari_kepada" class="form-label"><strong>Dari</strong></label>
+                            <input autocomplete="off" type="text" class="form-control @error('dari_kepada') is-invalid @enderror" id="dari_kepada" name="dari_kepada" required value="{{ $suratkeluar->dari_kepada }}">
+                            @error('dari_kepada')
                                 <div class="invalid-feedback">
                                 {{ $message }}
                                 </div>
@@ -71,9 +72,9 @@
 
                     <div class="row mb-2">
                         <div class="col">
-                            <label for="dari_kepada" class="form-label"><strong>Dari</strong></label>
-                            <input autocomplete="off" type="text" class="form-control @error('dari_kepada') is-invalid @enderror" id="dari_kepada" name="dari_kepada" required value="{{ $suratkeluar->dari_kepada }}">
-                            @error('dari_kepada')
+                            <label for="box" class="form-label"><strong>Box</strong></label>
+                            <input autocomplete="off" type="text" class="form-control @error('box') is-invalid @enderror" id="box" name="box" required value="{{ $suratkeluar->box }}">
+                            @error('box')
                                 <div class="invalid-feedback">
                                 {{ $message }}
                                 </div>
@@ -90,6 +91,7 @@
                             </div>
                         @enderror
                     </div>
+
 
                     <div class="mb-2">
                         <label for="catatan" class="form-label"><strong>Catatan</strong></label>

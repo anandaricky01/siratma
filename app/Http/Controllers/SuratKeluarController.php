@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KodePengarsipan;
 use App\Models\SuratKeluar;
 use Illuminate\Http\Request;
 
@@ -46,15 +47,24 @@ class SuratKeluarController extends Controller
         }
 
         $validated = $request->validate([
-            'perihal' => 'required',
-            'kode' => 'required',
+            // 'perihal' => 'required',
+            // 'kode' => 'required',
             'tanggal_surat' => 'required|date',
+            'box' => 'required',
             'pengolah' => 'nullable',
             'lampiran' => 'required|numeric',
             'dari_kepada' => 'required',
             'isi_ringkas' => 'required',
             'catatan' => 'nullable'
         ]);
+
+        // menambahkan index dan juga kode pengarsipan
+        $kode = KodePengarsipan::where('kode_pengarsipan', $request->kode)->get();
+        if($kode->count() >= 1){
+            $validated['kode_pengarsipan_id'] = $kode[0]->id;
+        } else {
+            return redirect('/surat-keluar/create')->with('danger', 'Maaf, Nomor Index tidak ditemukan. <br>Silahkan Masukan No Index dalam Halaman Kode Pengarsipan!');
+        }
 
         $validated['no_urut'] = $no_urut;
 
@@ -103,15 +113,28 @@ class SuratKeluarController extends Controller
     public function update(Request $request, SuratKeluar $suratKeluar)
     {
         $validated = $request->validate([
-            'perihal' => 'required',
-            'kode' => 'required',
+            // 'perihal' => 'required',
+            // 'kode' => 'required',
             'tanggal_surat' => 'required|date',
+            'box' => 'required',
             'pengolah' => 'nullable',
             'lampiran' => 'required|numeric',
             'dari_kepada' => 'required',
             'isi_ringkas' => 'required',
             'catatan' => 'nullable'
         ]);
+
+        // memeriksa apakah kode surat berbeda
+        if($suratKeluar->kode_pengarsipan->kode_pengarsipan != $request->kode){
+            // menambahkan index dan juga kode pengarsipan
+            $kode = KodePengarsipan::where('kode_pengarsipan', $request->kode)->get();
+            if($kode->count() >= 1){
+                $validated['kode_pengarsipan_id'] = $kode[0]->id;
+            } else {
+                $redirect = '/surat-keluar/' . $request->id . '/edit';
+                return redirect($redirect)->with('danger', 'Maaf, Nomor Index tidak ditemukan. <br>Silahkan Masukan No Index dalam Halaman Kode Pengarsipan!');
+            }
+        }
 
         if($request->tanggal_surat != $suratKeluar->tanggal_surat){
             // explode tanggal surat untuk menyamakan format pada database
